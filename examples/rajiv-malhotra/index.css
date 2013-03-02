@@ -1,0 +1,25 @@
+body {
+    background: url("retro_intro.png");
+    padding: 30px 60px;
+    font-family: Overlock, serif;
+}
+
+#meta {
+    list-style: none;
+    font-size: 12px;
+}
+
+#meta li {
+    display: inline-block;
+    margin: 12px;
+}
+
+#meta li a {
+    text-decoration: none;
+    color: #333;
+}
+
+#meta li a:hover {
+    text-decoration: underline;
+    color: #000;
+}

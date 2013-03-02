@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Player</title>
+    <link rel="stylesheet" href="../../yp/yp.css"/>
+    <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+
+<script src="../../libs/jquery.min.js"></script>
+<script src="../../yp/yp.js"></script>
+
+<div id="_yp"></div>
+
+<script>
+    $.get("https://docs.google.com/spreadsheet/pub?key=0Ags8LbfcrMzDdE1vUDVRMEpvalh5V3pQOXY2S3NRS0E&output=csv")
+            .success(function (rows) {
+                rows = rows.split("\n");
+                rows = rows.slice(1);
+                var data = {};
+                $(rows).each(function (index, row) {
+                    var cells = row.split(",");
+                    var id = cells[0];
+                    var topic = cells[1];
+                    var caption = cells[2];
+                    var start = convert_to_seconds(cells[3]);
+                    var end = convert_to_seconds(cells[4]);
+                    var playlist = data[topic] || [];
+                    playlist.push({id: id, start: start, end: end, caption: caption});
+                    data[topic] = playlist;
+                });
+                $("#_yp")._yp({data: data});
+            }).error(function () {
+                console.log("error", arguments);
+            });
+
+    function convert_to_seconds(h_mm_ss) {
+        h_mm_ss = h_mm_ss.split(":")
+        var h = Number(h_mm_ss[0]);
+        var mm = Number(h_mm_ss[1]);
+        var ss = Number(h_mm_ss[2]);
+        return ss + (mm * 60) + (h * 60 * 60);
+    }
+</script>
+
+<ul id="meta">
+    <li><a href="http://www.rajivmalhotra.com">Rajiv Malhotra</a></li>
+    <li><a href="https://twitter.com/RajivMessage">@RajivMessage</a></li>
+    <li><a href="http://beingdifferentbook.com/">Being Different</a></li>
+    <li><a href="http://www.infinityfoundation.com/">Infinity Foundation</a></li>
+</ul>
+
+</body>
+</html>
