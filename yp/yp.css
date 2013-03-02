@@ -1,0 +1,40 @@
+@import url(http://fonts.googleapis.com/css?family=Overlock:400,700,900);
+
+._yp {
+    display: inline-block;
+    background: #fff;
+    box-shadow: #333 0 0 12px;
+}
+
+._yp .col {
+    display: table-cell;
+    vertical-align: top;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+._yp .col .item {
+    padding: 9px 18px;
+    font-family: Overlock, serif;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+._yp .col .item:hover,
+._yp .col .selected {
+    background: #5e728e;
+    color: #fff;
+    text-shadow: #000 0 0 1px;
+}
+
+._yp .playlist {
+    border-left: 1px dotted #666;
+}
+
+._yp .stage {
+    padding: 12px;
+    background: #5e728e;
+    border-left: 1px dotted #666;
+}
